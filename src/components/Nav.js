@@ -9,30 +9,41 @@ const Nav = () => {
   };
   return (
     <div>
-      <ul className="nav-ul">
-        <li>
-          <Link to="/">Products</Link>
-        </li>
-        <li>
-          <Link to="/add">Add Products</Link>
-        </li>
-        <li>
-          <Link to="/update">Update Products</Link>
-        </li>
-        <li></li>
-        <li>
-          <Link to="/profile">profile</Link>
-        </li>
-        <li>
-          {auth ? (
+      <img
+        alt="logo"
+        className="logo"
+        src="https://img.icons8.com/?size=64&id=44050&format=png&color=1A6DFF,C822FF"
+      />
+      {auth ? (
+        <ul className="nav-ul">
+          <li>
+            <Link to="/">Products</Link>
+          </li>
+          <li>
+            <Link to="/add">Add Products</Link>
+          </li>
+          <li>
+            <Link to="/update"> Update Products</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
             <Link onClick={logout} to="/signup">
-              logout
+              Logout ({JSON.parse(auth).name})
             </Link>
-          ) : (
-            <Link to="/signup">Signup</Link>
-          )}
-        </li>
-      </ul>
+          </li>
+        </ul>
+      ) : (
+        <ul className="nav-ul nav-right">
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      )}
     </div>
   );
 };
