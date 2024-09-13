@@ -3,6 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Signup from "./components/Signup";
+import PrivateComponent from "./components/PrivateComponents";
+import Login from "./components/Login";
+import AddProduct from "./components/AddProduct";
+import ProductList from "./components/ProductList";
+import UpdateComponent from "./components/UpdateComponent";
 
 function App() {
   return (
@@ -10,14 +15,16 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<h1>product components</h1>} />
-          <Route path="/add" element={<h1>add product components</h1>} />
-          <Route path="/update" element={<h1>update product components</h1>} />
-          <Route path="/profile" element={<h1>Profile page</h1>} />
+          <Route element={<PrivateComponent />}>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/add" element={<AddProduct />} />
+            <Route path="/update/:id" element={<UpdateComponent />} />
+            <Route path="/profile" element={<h1>Profile page</h1>} />
+            <Route path="/logout" element={<h1>logout page</h1>} />
+          </Route>
 
-          <Route path="/logout" element={<h1>logout page</h1>} />
-
-          <Route path="/Signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <Footer />;
